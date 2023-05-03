@@ -1,4 +1,21 @@
 # proyecto2023
+Informacion del proyecto:
+
+Graficador de tiro Parabólico.
+
+Integrantes del proyecto: Marcos Don
+
+link a gh-pages:
+ 
+Resumen del proyecto: 
+
+La aplicación que cree es un simulador de tiro parabólico. Esta aplicación tiene dos campos de entrada donde el usuario puede ingresar el ángulo y la velocidad inicial del objeto.
+Después de ingresar estos dos valores, el usuario debe hacer clic en el botón "Graficar" para ver la trayectoria del objeto en un gráfico.
+
+Tecnologias Usadas:
+HTML, CSS, JAVASCRIPT, BOOTSTRAP.
+
+
 Estructura de Proyecto Lab de Compu II - 2023
 
 ## Requisitos del Primer Parcial
