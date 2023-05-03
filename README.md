@@ -5,7 +5,7 @@ Graficador de tiro Parabólico.
 
 Integrantes del proyecto: Marcos Don
 
-link a gh-pages:
+link a gh-pages: **[link a la pagina](https://ucc-labcompu2.github.io/proyecto2023-don/)**
  
 Resumen del proyecto: 
 
