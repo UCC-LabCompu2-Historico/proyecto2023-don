@@ -5,7 +5,7 @@ Graficador de tiro Parabólico.
 
 Integrantes del proyecto: Marcos Don
 
-link a gh-pages: **[link a la pagina](https://ucc-labcompu2.github.io/proyecto2023-don/)**
+**[link a la pagina del proyecto](https://ucc-labcompu2.github.io/proyecto2023-don/)**
  
 Resumen del proyecto: 
 
@@ -14,6 +14,8 @@ Después de ingresar estos dos valores, el usuario debe hacer clic en el botón 
 
 Tecnologias Usadas:
 HTML, CSS, JAVASCRIPT, BOOTSTRAP.
+
+En este momento el proyecto no funciona en su totalidad, hay que arreglar la funcion para graficar en el canva.
 
 
 Estructura de Proyecto Lab de Compu II - 2023
