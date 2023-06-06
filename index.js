@@ -37,9 +37,9 @@ function graficar() {
   // Obtener los valores de los inputs
   const velocidad = document.getElementById("velocidad-input").value;
   const angulo = document.getElementById("angulo-input").value;
-  console.log(velocidad);
+
   if (angulo == "") {
-    alert("No se puede graficar sin un angulo");
+    alert("No se puede graficar sin un ángulo");
     return;
   }
   if (velocidad == "") {
@@ -50,17 +50,14 @@ function graficar() {
     alert("La velocidad no puede ser negativa");
     return;
   }
-
   if (angulo < 0) {
-    alert("El angulo no puede ser negativo");
+    alert("El ángulo no puede ser negativo");
     return;
   }
 
   // Obtener las labels donde se mostrarán los resultados
   let alturaMaximaLabel = document.getElementById("altura-maxima");
   let alcanceMaximoLabel = document.getElementById("alcance-maximo");
-
-  //
 
   // Convertir el ángulo de grados a radianes
   const anguloRad = angulo * (Math.PI / 180);
@@ -74,21 +71,30 @@ function graficar() {
   alturaMaximaLabel.innerHTML = alturaMaxima.toFixed(3);
   alcanceMaximoLabel.innerHTML = alcanceMaximo.toFixed(3);
 
-  // configurar el canvas para dibujar la trayectoria
+  // Configurar el canvas para dibujar la trayectoria
   ctx.beginPath();
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 0.1;
   ctx.strokeStyle = "#000";
   ctx.moveTo(0, canvas.height);
-  for (let t = 0; t <= tiempoTotal; t += 0.01) {
+
+  let t = 0;
+  //set interval se encarga de dibujar la trayectoria en el canvas progresivamente
+  const interval = setInterval(() => {
+    if (t > tiempoTotal) {
+      // Si se alcanzo el tiempo total, detener el intervalo
+      clearInterval(interval);
+      return;
+    }
+
     const x = velocidad * Math.cos(anguloRad) * t;
     const y =
       canvas.height -
       (velocidad * Math.sin(anguloRad) * t - 0.5 * 9.8 * t ** 2);
     ctx.lineTo(x, y);
-  }
+    ctx.stroke();
 
-  // Dibujar la trayectoria
-  ctx.stroke();
+    t += 0.01;
+  }, 5); // 5 milisegundos de intervalo
 }
 
 /**
