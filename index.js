@@ -1,9 +1,12 @@
-
-window.addEventListener('load', () => {
-
-  //generar las lineas de abajo y de la izquierda del canva cuando garga la pagina
-  const canvas = document.getElementById('main-canvas');
-  const ctx = canvas.getContext('2d');
+/**
+ * Esta función se ejecuta cuando se carga la pagina, se encarga de dibujar las lineas del canvas
+ * @method load
+ * @param {string} load - Este parámetro no se usa
+ * @return {void} - No retorna nada
+ */
+window.addEventListener("load", () => {
+  const canvas = document.getElementById("main-canvas");
+  const ctx = canvas.getContext("2d");
 
   ctx.beginPath();
   ctx.moveTo(0, 0);
@@ -18,27 +21,44 @@ window.addEventListener('load', () => {
   ctx.lineWidth = 1;
   ctx.strokeStyle = "#000";
   ctx.stroke();
-
 });
 
+/**
+ * Esta función se encarga de graficar la trayectoria del proyectil en el canvas, no recibe parámetros interactua con los inputs del html y los usa para calcular la trayectoria
+ * @method graficar
+ * @param none
+ * @return {void} - No retorna nada
+ */
 function graficar() {
-  const canvas = document.getElementById('main-canvas');
-  const ctx = canvas.getContext('2d');
+  // Obtener el canvas y el contexto
+  const canvas = document.getElementById("main-canvas");
+  const ctx = canvas.getContext("2d");
+
   // Obtener los valores de los inputs
-  const velocidad = document.getElementById('velocidad-input').value;
-  const angulo = document.getElementById('angulo-input').value;
-  console.log(velocidad)
+  const velocidad = document.getElementById("velocidad-input").value;
+  const angulo = document.getElementById("angulo-input").value;
+  console.log(velocidad);
   if (angulo == "") {
     alert("No se puede graficar sin un angulo");
-    return
+    return;
   }
   if (velocidad == "") {
     alert("No se puede graficar sin una velocidad");
-    return
+    return;
+  }
+  if (velocidad < 0) {
+    alert("La velocidad no puede ser negativa");
+    return;
   }
 
-  let alturaMaximaLabel = document.getElementById('altura-maxima');
-  let alcanceMaximoLabel = document.getElementById('alcance-maximo');
+  if (angulo < 0) {
+    alert("El angulo no puede ser negativo");
+    return;
+  }
+
+  // Obtener las labels donde se mostrarán los resultados
+  let alturaMaximaLabel = document.getElementById("altura-maxima");
+  let alcanceMaximoLabel = document.getElementById("alcance-maximo");
 
   //
 
@@ -50,35 +70,43 @@ function graficar() {
   const alcanceMaximo = (velocidad ** 2 * Math.sin(2 * anguloRad)) / 9.8;
   const alturaMaxima = (velocidad ** 2 * Math.sin(anguloRad) ** 2) / (2 * 9.8);
 
-
+  // Mostrar los resultados en las labels con 3 decimales
   alturaMaximaLabel.innerHTML = alturaMaxima.toFixed(3);
   alcanceMaximoLabel.innerHTML = alcanceMaximo.toFixed(3);
 
-
-  // Dibujar la trayectoria del proyectil
+  // configurar el canvas para dibujar la trayectoria
   ctx.beginPath();
   ctx.lineWidth = 2;
   ctx.strokeStyle = "#000";
   ctx.moveTo(0, canvas.height);
   for (let t = 0; t <= tiempoTotal; t += 0.01) {
     const x = velocidad * Math.cos(anguloRad) * t;
-    const y = canvas.height - (velocidad * Math.sin(anguloRad) * t - 0.5 * 9.8 * t ** 2);
+    const y =
+      canvas.height -
+      (velocidad * Math.sin(anguloRad) * t - 0.5 * 9.8 * t ** 2);
     ctx.lineTo(x, y);
   }
 
+  // Dibujar la trayectoria
   ctx.stroke();
 }
 
+/**
+ * Esta funcion se encarga de limpiar el canvas y los valores de las labels que muestran los resultados
+ * @method limpiarGrafico
+ * @param none
+ * @return {void} - No retorna nada
+ */
 
 function limpiarGrafico() {
   const canvas = document.getElementById("main-canvas");
   const ctx = canvas.getContext("2d");
-  let alturaMaximaLabel = document.getElementById('altura-maxima');
-  let alcanceMaximoLabel = document.getElementById('alcance-maximo');
+  let alturaMaximaLabel = document.getElementById("altura-maxima");
+  let alcanceMaximoLabel = document.getElementById("alcance-maximo");
 
-  //limpiar los valores de las labels 
-  alturaMaximaLabel.innerHTML = "-"
-  alcanceMaximoLabel.innerHTML = "-"
+  //limpiar los valores de las labels
+  alturaMaximaLabel.innerHTML = "-";
+  alcanceMaximoLabel.innerHTML = "-";
   // Limpiar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -96,12 +124,26 @@ function limpiarGrafico() {
   ctx.stroke();
 }
 
+/**
+ * Esta funcion se encarga de mostrar el popup con la informacion del proyecto
+ * @method showPopUp
+ * @param none
+ * @return {void} - No retorna nada
+ */
+
 function showPopUp() {
-  const popup = document.getElementById('popup');
-  popup.style.display = 'block'
+  const popup = document.getElementById("popup");
+  popup.style.display = "block";
 }
 
+/**
+ * Esta funcion se encarga de cerrar el popup con la informacion del proyecto
+ * @method showPopUp
+ * @param none
+ * @return {void} - No retorna nada
+ */
+
 function closePopUp() {
-  const popup = document.getElementById('popup');
-  popup.style.display = 'none'
+  const popup = document.getElementById("popup");
+  popup.style.display = "none";
 }
