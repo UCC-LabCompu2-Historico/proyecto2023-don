@@ -19,11 +19,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Calculadora de tiro parabolico de un cuerpo."
+      content="Calculadora de tiro parabólico de un cuerpo."
     />
     <meta
       name="keywords"
-      content="Tiro parabolico, Calculadora, Calculadora de tiro parabolico, fisica"
+      content="Tiro parabolico, Calculadora, Calculadora de tiro parabólico, física"
     />
     <meta name="author" content="Marcos Don" />
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -32,14 +32,14 @@
   <header>
     <div class="row header-row">
       <div class="col-md-11">
-        <h1 class="title">Graficador de tiro parabólico</h1>
+        <h1 class="title">Calculadora de tiro parabólico</h1>
       </div>
       <div class="col-md-1">
         <button id="info-btn" onclick="showPopUp()">
           <img
             src="images/info.svg"
             id="info-logo"
-            alt="Boton para ver la informacion Del proyecto"
+            alt="Botón para ver la información del proyecto"
           />
         </button>
       </div>
@@ -71,13 +71,13 @@
       <div class="left-container col-md-4">
         <div class="datos-section">
           <h1 class="left-container-h1">Datos:</h1>
-          <label class="left-container-labels">Velocidad Inicial m/s:</label>
+          <label class="left-container-labels" for="velocidad-input" >Velocidad Inicial m/s:</label>
           <input
             id="velocidad-input"
             type="number"
             placeholder="ingrese velocidad"
           />
-          <label class="left-container-labels">Angulo:</label>
+          <label class="left-container-labels" for="angulo-input" >Ángulo:</label>
           <input id="angulo-input" type="number" placeholder="ingrese angulo" />
           <button class="left-bar-btn" onclick="graficar()">Graficar</button>
           <button class="left-bar-btn" onclick="limpiarGrafico()">
@@ -86,7 +86,7 @@
         </div>
         <div class="result-section">
           <h1 class="left-container-h1">Resultados :</h1>
-          <h3 class="left-container-h3">Altura Maxima:</h3>
+          <h3 class="left-container-h3">Altura Máxima:</h3>
           <label id="altura-maxima" for="altura-maxima">-</label>
           <h3 class="left-container-h3">Alcance Máximo:</h3>
           <label id="alcance-maximo" for="alcance-maximo">-</label>
@@ -102,6 +102,6 @@
   </body>
 
   <footer id="page-footer">
-    <p>Pagina creada por Marcos Don</p>
+    <p>Página creada por Marcos Don</p>
   </footer>
 </html>

@@ -39,20 +39,36 @@ function graficar() {
   const angulo = document.getElementById("angulo-input").value;
 
   if (angulo == "") {
+    limpiarInputs();
     alert("No se puede graficar sin un ángulo");
     return;
   }
   if (velocidad == "") {
+    limpiarInputs();
     alert("No se puede graficar sin una velocidad");
     return;
   }
   if (velocidad < 0) {
+    limpiarInputs();
     alert("La velocidad no puede ser negativa");
     return;
   }
   if (angulo < 0) {
+    limpiarInputs();
     alert("El ángulo no puede ser negativo");
     return;
+  }
+
+  /**
+   * Esta funcion se encarga de limpiar los inputs
+   * @method limpiarInputs
+   * @param none
+   * @return {void} - No retorna nada
+   */
+
+  function limpiarInputs() {
+    document.getElementById("velocidad-input").value = "";
+    document.getElementById("angulo-input").value = "";
   }
 
   // Obtener las labels donde se mostrarán los resultados
