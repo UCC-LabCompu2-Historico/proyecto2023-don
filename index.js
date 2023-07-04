@@ -15,11 +15,59 @@ window.addEventListener("load", () => {
   ctx.strokeStyle = "#000";
   ctx.stroke();
 
+  // Agregar escala en el eje inferior
+  const escalaX = 25; // Valor de la escala en píxeles
+  const maxDistancia = 300; // Distancia máxima de la parábola
+  const escalaY = 25; // Valor de la escala en píxeles
+  const maxAltura = 150; // Altura máxima de la parábola
+
+  // Agregar etiquetas en el eje x (distancia)
+  ctx.beginPath();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "#000";
+  ctx.fillStyle = "#000";
+  ctx.font = "8px Arial";
+
+  for (let i = 0; i <= maxDistancia; i += escalaX) {
+    const x = (i * canvas.width) / maxDistancia;
+    const y = canvas.height - 5;
+
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + 10);
+    ctx.stroke();
+
+    ctx.fillText(i.toString(), x - 5, y - 2);
+  }
+
+  ctx.closePath();
+
+  // Agregar etiquetas en el eje y (altura)
+  ctx.beginPath();
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "#000";
+  ctx.fillStyle = "#000";
+  ctx.font = "8px Arial";
+
+  for (let i = 0; i <= maxAltura; i += escalaY) {
+    const x = 5;
+    const y = canvas.height - (i * canvas.height) / maxAltura;
+
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - 10, y);
+    ctx.stroke();
+
+    ctx.fillText(i.toString(), x + 5, y + 2);
+  }
+
+  ctx.closePath();
+
   ctx.beginPath();
   ctx.moveTo(0, canvas.height);
   ctx.lineTo(canvas.width, canvas.height);
   ctx.lineWidth = 1;
   ctx.strokeStyle = "#000";
+  ctx.stroke();
+
   ctx.stroke();
 });
 
@@ -126,9 +174,10 @@ function limpiarGrafico() {
   let alturaMaximaLabel = document.getElementById("altura-maxima");
   let alcanceMaximoLabel = document.getElementById("alcance-maximo");
 
-  //limpiar los valores de las labels
+  // Limpiar los valores de las labels
   alturaMaximaLabel.innerHTML = "-";
   alcanceMaximoLabel.innerHTML = "-";
+
   // Limpiar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -141,6 +190,36 @@ function limpiarGrafico() {
   // Establecer el grosor y el color de las líneas
   ctx.lineWidth = 1;
   ctx.strokeStyle = "#000";
+
+  // Agregar la escala en el eje inferior
+  const escalaX = 25; // Valor de la escala en píxeles
+  const maxDistancia = 300; // Distancia máxima de la parábola
+  const escalaY = 25; // Valor de la escala en píxeles
+  const maxAltura = 150; // Altura máxima de la parábola
+
+  // Dibujar las líneas de la escala en el eje x (distancia)
+  for (let i = 0; i <= maxDistancia; i += escalaX) {
+    const x = (i * canvas.width) / maxDistancia;
+    const y = canvas.height - 5;
+
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + 10);
+    ctx.stroke();
+
+    ctx.fillText(i.toString(), x - 5, y - 2);
+  }
+
+  // Dibujar las líneas de la escala en el eje y (altura)
+  for (let i = 0; i <= maxAltura; i += escalaY) {
+    const x = 5;
+    const y = canvas.height - (i * canvas.height) / maxAltura;
+
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - 10, y);
+    ctx.stroke();
+
+    ctx.fillText(i.toString(), x + 5, y + 2);
+  }
 
   // Dibujar las líneas
   ctx.stroke();
